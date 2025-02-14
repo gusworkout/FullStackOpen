@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+    server-->>browser: HTML document
+    deactivate server
+
+    activate server
+    server-->>browser: [{content: "kl", date: "2025-02-14T04:00:19.511Z"}]
+    deactivate server
+
