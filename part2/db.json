@@ -1,9 +1,3 @@
 {
-  "persons": [
-    {
-      "id": "5f22",
-      "phone": "321",
-      "content": "add"
-    }
-  ]
+  "persons": []
 }

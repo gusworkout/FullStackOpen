@@ -1,0 +1,29 @@
+h1 {
+    color: green;
+    font-style: italic;
+}
+
+li {
+    color: rgb(26, 8, 163);
+    padding-top: 5px;
+    font-size: 20px;
+}
+
+
+.nams {
+    color: rgb(105, 12, 12);
+    padding-top: 5px;
+    font-size: 20px;
+}
+
+.error {
+
+    color: rgb(13, 190, 43);
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}

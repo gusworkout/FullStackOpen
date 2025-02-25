@@ -1,7 +1,7 @@
 const Note =({name, toggleNumber}) => {
 
   return (
-    <li>
+    <li className="nams">
     {name.content} {name.phone}
     <button onClick={toggleNumber}> Delete</button>
     </li>
