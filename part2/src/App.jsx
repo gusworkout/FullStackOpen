@@ -3,7 +3,7 @@ import Note from './components/Note'
 
 const App = (props) => {
 
-
+//new
   const [names, setNames] = useState(props.names)
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
