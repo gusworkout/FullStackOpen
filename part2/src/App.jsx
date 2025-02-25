@@ -25,7 +25,6 @@ const Footer = () =>{
 const App = (props) => {
 
   //new
-  const [names, setNames] = useState(props.names)
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
   const [showAll, setShowAll] = useState(true)
@@ -35,7 +34,7 @@ const App = (props) => {
 
   useEffect(() => {
     noteService.getAll().then(initialPersons => {
-      setNames(initialPersons)
+      setPersons(initialPersons)
     }).catch(error => console.error('Error fetching data:', error))
   }, [])
   const toggleImportanceOf = id => {
@@ -45,7 +44,7 @@ const App = (props) => {
       noteService
         .supr(id)
         .then(() => {
-          setNames(names.filter(person => person.id !== id))
+          setPersons(persons.filter(person => person.id !== id))
 
         }).catch()
     }
@@ -56,7 +55,7 @@ const App = (props) => {
     event.preventDefault()
 
 
-    const existingPerson = names.find(person => person.phone === newPhone);
+    const existingPerson = persons.find(person => person.phone === newPhone);
 
     if (existingPerson) {
       if (window.confirm(`${newPhone} already exists. Do you want to replace it?`)) {
@@ -64,7 +63,7 @@ const App = (props) => {
 
         noteService.update(existingPerson.id, updatedPerson)
           .then(returnedPerson => {
-            setNames(names.map(p => p.id !== existingPerson.id ? p : returnedPerson))
+            setPersons(persons.map(p => p.id !== existingPerson.id ? p : returnedPerson))
             setNewPhone('')
           }).catch(setErrorMessage(
             `Person has already been removed from server`
@@ -76,7 +75,7 @@ const App = (props) => {
       return
     }
 
-    if (names.find((name) => name.content === newName)) {
+    if (persons.find((name) => name.content === newName)) {
       alert(`${newName} is already added to phonebook`)
       return
     }
@@ -91,7 +90,7 @@ const App = (props) => {
     noteService
       .create(noteObject)
       .then(returnedNote => {
-        setNames(names.concat(returnedNote))
+        setPersons(persons.concat(returnedNote))
         setNewName('')
         setNewPhone('')
         setErrorMessage(
@@ -111,8 +110,8 @@ const App = (props) => {
 
 
   const notesToShow = showAll
-    ? names
-    : names.filter(name => name.content.toLowerCase().includes(filter.toLowerCase()))
+    ? persons
+    : persons.filter(name => name.content.toLowerCase().includes(filter.toLowerCase()))
   return (
     <div>
       <h1>Add Name</h1>
